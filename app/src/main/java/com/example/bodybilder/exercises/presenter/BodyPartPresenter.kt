@@ -2,12 +2,16 @@ package com.example.bodybilder.exercises.presenter
 
 import android.content.Context
 import android.os.Bundle
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import com.example.bodybilder.R
 import com.example.bodybilder.data.local.DatabaseProvider
 import com.example.bodybilder.data.model.BodyPart
+import com.example.bodybilder.data.model.Exercises
 import com.example.bodybilder.data.repository.ExercisesRepositoryImpl
 import com.example.bodybilder.exercises.contract.BodyPartContract
+import com.example.bodybilder.exercises.contract.ExercisesContract
+import com.example.bodybilder.exercises.view.ExercisesFragment
 import com.example.bodybuilder.data.repository.BodyPartRepositoryImpl
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +19,7 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-
+import kotlin.collections.joinToString
 
 class BodyPartPresenter(
     private val view: BodyPartContract.View,
@@ -29,7 +33,7 @@ class BodyPartPresenter(
     init {
         scope.launch {
             repository.insertInitialData()
-            exercisesRepository.insertInitialData() // اضافه کردن داده‌های اولیه Exercises
+            exercisesRepository.insertInitialData() // اطمینان از وجود داده‌های اولیه Exercises
             loadBodyParts()
         }
     }
@@ -49,11 +53,19 @@ class BodyPartPresenter(
         scope.launch(Dispatchers.IO) {
             val entity = bodyPartDao.getAll().find { it.name == bodyPart.name }
             entity?.let {
-                val exercises = exercisesRepository.getExercises(it.id)
                 withContext(Dispatchers.Main) {
-                    view.showError("تمرین‌ها برای ${bodyPart.name}: ${exercises.joinToString { it.name }}")
+                    // انتقال به ExercisesFragment با FragmentTransaction
+                    val fragment = ExercisesFragment().apply {
+                        arguments = Bundle().apply {
+                            putInt("bodyPartId", it.id)
+                        }
+                    }
+                    (context as? FragmentActivity)?.supportFragmentManager?.beginTransaction()
+                        ?.replace(R.id.fragment_container, fragment)
+                        ?.addToBackStack(null) // اضافه کردن به Back Stack
+                        ?.commit()
                 }
-            }
+            } ?: view.showError("بخش بدن یافت نشد")
         }
     }
 
