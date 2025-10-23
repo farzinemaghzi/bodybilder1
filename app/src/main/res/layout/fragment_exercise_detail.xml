@@ -15,8 +15,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-
-
         <!-- اسلایدر برای عکس‌های حرکات -->
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/steps_view_pager"
@@ -27,6 +25,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:layout_marginBottom="8dp">
 
             <LinearLayout
@@ -58,137 +57,146 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageButton
-                    android:id="@+id/play_video_end"
+                    android:id="@+id/description"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/video_button_bg"
                     android:contentDescription="Play Video End"
-                    android:src="@drawable/play" />
+                    android:src="@drawable/description_exercise_dtail" />
 
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <!-- تکرارها و ست‌ها -->
+        <!-- تکرارها و ست‌ها (با marginBottom بیشتر برای فضای کیبورد) -->
         <LinearLayout
+            android:id="@+id/reps_weights_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/reps_weights_bg"
-            android:orientation="horizontal"
-            android:padding="8dp">
+            android:layout_margin="15dp"
+            android:layout_marginBottom="150dp"
+        android:background="@drawable/reps_weights_bg"
+        android:orientation="horizontal"
+        android:padding="8dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/reps_weights_border">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/reps_weights_border">
 
-                <TextView
-                    android:id="@+id/weights_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="2dp"
-                    android:text="WEIGHTS"
-                    android:textColor="#fff"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/weights_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:text="وزن"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/weights_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_reps_weights"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    android:padding="8dp"
-                    android:textColor="#fff"
-                    android:textCursorDrawable="@drawable/cursor_color"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/weights_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_reps_weights"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="4"
+                android:padding="8dp"
+                android:textColor="#fff"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/reps_weights_border">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/reps_weights_border">
 
-                <TextView
-                    android:id="@+id/reps_label"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="2dp"
-                    android:text="REPS"
-                    android:textColor="#fff"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/reps_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="2dp"
+                android:text="تکرار"
+                android:textColor="#fff"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
-                    android:id="@+id/reps_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/input_reps_weights"
-                    android:gravity="center"
-                    android:inputType="number"
-                    android:maxLength="4"
-                    android:padding="8dp"
-                    android:textColor="#fff"
-                    android:textCursorDrawable="@drawable/cursor_color"
-                    android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/reps_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/input_reps_weights"
+                android:gravity="center"
+                android:inputType="number"
+                android:maxLength="4"
+                android:padding="8dp"
+                android:textColor="#fff"
+                android:textCursorDrawable="@drawable/cursor_color"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_weight="1"
-                android:background="@drawable/add_button_bg">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@drawable/add_button_bg">
 
-                <ImageButton
-                    android:id="@+id/add_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:contentDescription="Add"
-                    android:src="@drawable/arrow_small_right"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <ImageButton
+                android:id="@+id/add_button"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Add"
+                android:src="@drawable/plus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
-
-        <!-- توضیحات تمرین -->
-        <TextView
-            android:id="@+id/exercise_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:textColor="#424242"
-            android:textSize="16sp" />
-
-
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+    <!-- توضیحات تمرین -->
+    <TextView
+        android:id="@+id/exercise_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:textColor="#424242"
+        android:textSize="16sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rv_history"
+        android:layout_marginBottom="16dp"
+        android:scrollbars="vertical"
+        android:clipToPadding="false"
+        android:paddingBottom="16dp" />
+
+</LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>

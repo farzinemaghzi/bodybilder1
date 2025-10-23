@@ -1,117 +1,106 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:background="#d9d9d9"
+        android:layout_height="wrap_content"
         android:layout_margin="15dp"
-        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/back_history_reps_wighets"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
-
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="match_parent"
-              android:layout_weight="1"
-              android:orientation="vertical"
-                android:gravity="center">
-
-
-           <TextView
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:text="Weights"
-               android:textSize="16sp"
-               android:textStyle="bold"
-               android:layout_marginBottom="4dp"/>
-              <TextView
-                    android:id="@+id/tv_weights"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10"
-                    android:textSize="16sp"/>
-
-       </LinearLayout>
-
+        <!-- Weights -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center">
-
+            android:padding="5dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reps"
+                android:layout_marginBottom="4dp"
+                android:text="وزن"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="4dp"/>
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_weights"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="10"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- Reps -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="تکرار"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tv_reps"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="10"
-                android:textSize="16sp"/>
-
+                android:textSize="16sp" />
         </LinearLayout>
 
+        <!-- Date (background primary) -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/primary"
+            android:background="@drawable/back_date_history_reps_wighets"
+            android:gravity="center"
             android:orientation="vertical"
-            android:gravity="center">
-
-
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="AUG"-->
-<!--                android:textColor="#ffffff"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
-<!--                android:layout_marginBottom="4dp"/>-->
-<!--            <TextView-->
-<!--                android:id="@+id/day_tv"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="18"-->
-<!--                android:textColor="#ffffff"-->
-<!--                android:textSize="16sp"/>-->
-<!--            <TextView-->
-<!--                android:id="@+id/yaers_tv"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="2025"-->
-<!--                android:textColor="#ffffff"-->
-<!--                android:textSize="16sp"/>-->
+            android:padding="8dp">
 
             <TextView
+                android:id="@+id/tv_month"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_date"/>
+                android:layout_marginBottom="4dp"
+                android:text="اکتبر"
+                android:textColor="#ffffff"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
+            <TextView
+                android:id="@+id/tv_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="09"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2025"
+                android:textColor="#ffffff"
+                android:textSize="16sp" />
         </LinearLayout>
-
-
-
-
-
-
-
-
-
 
     </LinearLayout>
 

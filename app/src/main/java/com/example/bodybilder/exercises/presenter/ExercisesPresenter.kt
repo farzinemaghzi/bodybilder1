@@ -65,7 +65,6 @@ class ExercisesPresenter(
             ?.commit()
     }
 
-
     override fun saveWorkoutHistory(exerciseId: Int, reps: Int, weights: Int, date: String) {
         scope.launch {
             try {
@@ -82,6 +81,23 @@ class ExercisesPresenter(
                 view.onWorkoutHistorySaved()
             } catch (e: Exception) {
                 view.showError("خطا در ذخیره تاریخچه تمرین: ${e.message}")
+            }
+        }
+    }
+
+    // **جدید: implement متد loadHistoryForExercise از Contract**
+    override fun loadHistoryForExercise(exerciseId: Int) {
+        scope.launch {
+            try {
+                withContext(Dispatchers.IO) {
+                    // لود لیست فقط برای این exerciseId (فیلتر در Repository)
+                    val historyList = repository.getWorkoutHistoryForExercise(exerciseId)
+                    withContext(Dispatchers.Main) {
+                        view.showHistory(historyList)  // نمایش در RecyclerView
+                    }
+                }
+            } catch (e: Exception) {
+                view.showError("خطا در لود تاریخچه: ${e.message}")
             }
         }
     }

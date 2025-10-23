@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bodybilder.R
+import com.example.bodybilder.data.local.entity.WorkoutHistoryEntity
 import com.example.bodybilder.data.model.Exercises
 import com.example.bodybilder.data.model.WorkoutHistory
 import com.example.bodybilder.exercises.contract.ExercisesContract
@@ -71,6 +72,9 @@ class ExercisesFragment : Fragment(), ExercisesContract.View {
     }
 
     override fun onWorkoutHistorySaved() {
+        // خالی نگه می‌داریم، چون این متد برای ExerciseDetailFragment استفاده می‌شه
+    }
+    override fun showHistory(historyList: List<WorkoutHistoryEntity>) {
         // خالی نگه می‌داریم، چون این متد برای ExerciseDetailFragment استفاده می‌شه
     }
 
